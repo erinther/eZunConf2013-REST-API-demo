@@ -1,0 +1,6 @@
+Header set Access-Control-Allow-Origin "http://localhost"
+Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, PUBLISH"
+Header set Access-Control-Allow-Headers "authorization, accept, origin, content-type"
+Header set Access-Control-Allow-Credentials "true"
+Header set Access-Control-Max-Age "300"
+

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>REST API Demo</title>
+    <script src="base64.js"></script>
     <link rel="stylesheet" type="text/css" href="cssgrids-min.css">
     <link rel="stylesheet" type="text/css" href="cssbutton-min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -108,8 +109,11 @@
 
         function doRequest(method, resource, headers, body, callback) {
             var request = new XMLHttpRequest();
+            resource = 'http://ezdemo.websoftix.com' + resource;
             log("  [REQUEST] " + method + " " + resource);
             request.open(method, resource, true);
+            request.withCredentials = true;
+            request.setRequestHeader( 'Authorization', 'Basic ' + Base64.encode( 'user:password' ) );
             request.onreadystatechange = function () {
                 if ( request.readyState === 4 ) {
                     log("  [REQUEST] Done!");
