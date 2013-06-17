@@ -44,8 +44,6 @@ REST API!
   * The browser should ask for the permission to use the webcam
   * Click on *Capture!* to take a picture with your webcam
   * In *Your profile* part, fill a name and click on *Publish*
-  * The first time you click on *Publish*, the browser should ask for a login
-    and a password of an eZ Publish user with the permission to create content
   * The log part in the right should fill itself with messages and at the end of
     the publish operation, a link to the newly created content should be
     available
