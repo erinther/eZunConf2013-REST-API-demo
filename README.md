@@ -19,15 +19,25 @@ REST API!
 ## Install
 
   * Clone this git repository
-  * Copy or symlink the `demorest` folder into the `web` folder of eZ Publish
-  * If you installed [the rewrite rules for a virtual host
-    setup](https://confluence.ez.no/display/EZP51/Virtual+host+setup), you need
-    to add the following rewrite rule right before `RewriteRule .* /index.php`:
-
-    ```apache
-    RewriteRule ^/demorest/ - [L]
+  * Copy or symlink the `demorest` folder to make it accessible via your web server BUT outside 
+    you eZ Publish installation
+  * Make sure your have different hostnames. This example could be on http://localhost/demorest/
+    and the eZPublish on something different like http://ezdemo.local
+  * Edit line 112 
+    ``` resource = 'http://ezdemo.local' + resource; ```
+    and change the host name if yours is different than http://ezdemo.local
+  * Edit the line 116
     ```
-
+    request.setRequestHeader( 'Authorization', 'Basic ' + Base64.encode( 'user:password' ) );
+    ```
+   and replace 'user:password' with valid values for you eZ Publish installation
+  * copy the `.htaccess_for_ezp_web` file into your eZ Publish `web` folder and rename it to `.htaccess`.
+    This file is meant to solve the [CORS](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS) requirements.
+    If you have your `demorest` placed on a different domain than localhost edit first line of `.htaccess` 
+    and put correct domain there.
+  * make sure you have the `headers` apache2 module installed otherwise you will get 500 errors
+    when you will try yo access your eZ Publish site
+  
 ## Usage
 
   * Go to http://[ezpublish-url]/demorest/

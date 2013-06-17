@@ -109,7 +109,7 @@
 
         function doRequest(method, resource, headers, body, callback) {
             var request = new XMLHttpRequest();
-            resource = 'http://ezdemo.websoftix.com' + resource;
+            resource = 'http://ezdemo.local' + resource;
             log("  [REQUEST] " + method + " " + resource);
             request.open(method, resource, true);
             request.withCredentials = true;
